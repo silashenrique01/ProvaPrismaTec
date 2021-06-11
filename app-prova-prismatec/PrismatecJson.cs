@@ -29,8 +29,8 @@ namespace app_prova_prismatec
             var Telefone = Console.ReadLine();
 
             var empresa = new Empresa(CNPJ, RazaoSocial, NomeFantasia, Telefone);
-
             var novaEmpresaMembro = JsonConvert.SerializeObject(empresa);
+
             try
             {
                 var json = File.ReadAllText(arquivoJson);
@@ -46,6 +46,8 @@ namespace app_prova_prismatec
             {
                 WriteLine("Erro ao adicionar : " + ex.Message.ToString());
             }
+
+
         }
 
         public void AdicionarFuncionario(string arquivoJson)
@@ -123,27 +125,92 @@ namespace app_prova_prismatec
             try
             {
                 var jObject = JObject.Parse(json);
-                JArray arrayExperiencias = (JArray)jObject["experiencias"];
-                Write("Informe o ID da empresa a atualizar : ");
-                var empresaId = Convert.ToInt32(Console.ReadLine());
+                JArray arrayEmpresas = (JArray)jObject["empresas"];
+                Write("Informe o CNPJ da empresa a atualizar: ");
+                var cnpj = Console.ReadLine();
 
-                if (empresaId > 0)
+                if (cnpj != null)
                 {
-                    Write("Informe o nome da empresa: ");
-                    var nomeEmpresa = Convert.ToString(Console.ReadLine());
 
-                    foreach (var empresa in arrayExperiencias.Where(obj => obj["empresaid"].Value<int>() == empresaId))
+                    foreach (var empresa in arrayEmpresas.Where(obj => obj["Cnpj"].Value<string>() == cnpj))
                     {
-                        empresa["empresanome"] = !string.IsNullOrEmpty(nomeEmpresa) ? nomeEmpresa : "";
+                        WriteLine("\nCNPJ da empresa: " + empresa["Cnpj"]);
+
+                        Write("\nInforme novo CNPJ da empresa: ");
+                        empresa["Cnpj"] = Console.ReadLine();
+
+                        WriteLine($"\nRazão Social: {empresa["RazaoSocial"]}");
+
+                        Write("\nInforme a nova Razão Social da Empresa: ");
+                        empresa["RazaoSocial"] = Console.ReadLine();
+
+                        WriteLine("\nNome fantasia da Empresa: " + empresa["NomeFantasia"]);
+
+                        Write("\nInforme o novo nome fantasia da Empresa: ");
+                        empresa["NomeFantasia"] = Console.ReadLine();
+
+                        WriteLine("\nTelefone da Empresa: " + empresa["Telefone"]);
+
+                        Write("\nInforme o novo telefone da Empresa: ");
+                        var Telefone = Console.ReadLine();
+                        empresa["Telefone"] = Telefone;
                     }
 
-                    jObject["experiencias"] = arrayExperiencias;
+                    jObject["empresas"] = arrayEmpresas;
                     string saida = JsonConvert.SerializeObject(jObject, Formatting.Indented);
                     File.WriteAllText(arquivoJson, saida);
                 }
                 else
                 {
-                    Write("O ID da empresa é inválido, tente novamente!");
+                    Write("O CNPJ da empresa é inválido, tente novamente!");
+                    AtualizarEmpresa(arquivoJson);
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLine("Erro de Atualização : " + ex.Message.ToString());
+            }
+        }
+
+        public void AtualizarFuncionario(string arquivoJson)
+        {
+
+            string json = File.ReadAllText(arquivoJson);
+            try
+            {
+                var jObject = JObject.Parse(json);
+                JArray arrayEmpresas = (JArray)jObject["empresas"];
+                Write("Informe o CNPJ da empresa que o funcionario trabalha para atualizar: ");
+                var cnpj = Console.ReadLine();
+
+                if (cnpj != null)
+                {
+
+                    foreach (var empresa in arrayEmpresas.Where(obj => obj["Cnpj"].Value<string>() == cnpj))
+                    {
+                        foreach (var funcionario in empresa["Funcionarios"].ToList())
+                        {
+                            WriteLine("\nCPF do funcionario: " + funcionario["Cpf"]);
+
+                            Write("\nInforme novo Cpf do funcionario: ");
+                            funcionario["Cpf"] = Console.ReadLine();
+
+                            WriteLine($"\nNome do funcionario: {funcionario["Nome"]}");
+
+                            Write("\nInforme o nome do funcionario da Empresa: ");
+                            funcionario["Nome"] = Console.ReadLine();
+                        }
+
+
+                    }
+
+                    jObject["empresas"] = arrayEmpresas;
+                    string saida = JsonConvert.SerializeObject(jObject, Formatting.Indented);
+                    File.WriteAllText(arquivoJson, saida);
+                }
+                else
+                {
+                    Write("O CNPJ da empresa é inválido, tente novamente!");
                     AtualizarEmpresa(arquivoJson);
                 }
             }
@@ -182,6 +249,19 @@ namespace app_prova_prismatec
                 WriteLine("Erro de Atualização : " + ex.Message.ToString());
             }
             return guid;
+        }
+
+
+        public bool verificaTelefone(string telefone)
+        {
+            if (telefone[0] == '1' && telefone[1] == '1')
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         //fim

@@ -24,3 +24,13 @@ C:\Users\intuitive33\Desktop\ProvaPrismaTec\app-prova-prismatec\obj\Debug\app-pr
 C:\Users\intuitive33\Desktop\ProvaPrismaTec\app-prova-prismatec\obj\Debug\app-prova-prismatec.csproj.CopyComplete
 C:\Users\intuitive33\Desktop\ProvaPrismaTec\app-prova-prismatec\obj\Debug\app-prova-prismatec.exe
 C:\Users\intuitive33\Desktop\ProvaPrismaTec\app-prova-prismatec\obj\Debug\app-prova-prismatec.pdb
+C:\Users\silas\Desktop\ProvaPrismaTec\app-prova-prismatec\bin\Debug\app-prova-prismatec.exe.config
+C:\Users\silas\Desktop\ProvaPrismaTec\app-prova-prismatec\bin\Debug\app-prova-prismatec.exe
+C:\Users\silas\Desktop\ProvaPrismaTec\app-prova-prismatec\bin\Debug\app-prova-prismatec.pdb
+C:\Users\silas\Desktop\ProvaPrismaTec\app-prova-prismatec\bin\Debug\Newtonsoft.Json.dll
+C:\Users\silas\Desktop\ProvaPrismaTec\app-prova-prismatec\bin\Debug\Newtonsoft.Json.xml
+C:\Users\silas\Desktop\ProvaPrismaTec\app-prova-prismatec\obj\Debug\app-prova-prismatec.csprojAssemblyReference.cache
+C:\Users\silas\Desktop\ProvaPrismaTec\app-prova-prismatec\obj\Debug\app-prova-prismatec.csproj.CoreCompileInputs.cache
+C:\Users\silas\Desktop\ProvaPrismaTec\app-prova-prismatec\obj\Debug\app-prova-prismatec.csproj.CopyComplete
+C:\Users\silas\Desktop\ProvaPrismaTec\app-prova-prismatec\obj\Debug\app-prova-prismatec.exe
+C:\Users\silas\Desktop\ProvaPrismaTec\app-prova-prismatec\obj\Debug\app-prova-prismatec.pdb

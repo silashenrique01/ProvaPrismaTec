@@ -36,7 +36,7 @@ namespace app_prova_prismatec
             WriteLine("");
             while (true)
             {
-                WriteLine("Opções : 1 - Cadastrar empresa, 2 - Cadastrar funcionario, 3 - Atualizar - Selecionar \n");
+                WriteLine("Opções : 1 - Cadastrar empresa, 2 - Cadastrar funcionario, 3 - Atualizar empresa, 4 - Atualizar funcionario - Selecionar \n");
                 try
                 {
                     var option = ReadLine();
@@ -52,7 +52,7 @@ namespace app_prova_prismatec
                             prismatecJson.AtualizarEmpresa(arquivoJson);
                             break;
                         case "4":
-                            prismatecJson.DeletarEmpresa(arquivoJson);
+                            prismatecJson.AtualizarFuncionario(arquivoJson);
                             break;
                         default:
                             Main(null);
