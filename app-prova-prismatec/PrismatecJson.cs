@@ -25,8 +25,7 @@ namespace app_prova_prismatec
             WriteLine("\nQual o nome fantasia da Empresa : ");
             var NomeFantasia = Console.ReadLine();
 
-            WriteLine("\nQual o telefone da Empresa : ");
-            var Telefone = Console.ReadLine();
+            var Telefone = verificaTelefone();
 
             var empresa = new Empresa(CNPJ, RazaoSocial, NomeFantasia, Telefone);
             var novaEmpresaMembro = JsonConvert.SerializeObject(empresa);
@@ -252,16 +251,17 @@ namespace app_prova_prismatec
         }
 
 
-        public bool verificaTelefone(string telefone)
+        public string verificaTelefone()
         {
-            if (telefone[0] == '1' && telefone[1] == '1')
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            WriteLine("\nQual o telefone da Empresa : ");
+            var Telefone = Console.ReadLine();
+
+            if (Telefone.First() == '5')
+                return Telefone;
+
+            WriteLine("\nPor favor digite um telefone com DDD do RS!");
+            verificaTelefone();
+            return Telefone;
         }
 
         //fim
